@@ -32,6 +32,8 @@ class DocumentsController extends Controller
                 "document" => $document
             ], 201);
         }
+
+        return response()->json();
     }
 
     public function getDocuments(Request $request): \Illuminate\Http\JsonResponse
@@ -49,5 +51,19 @@ class DocumentsController extends Controller
         $pathToDocument = storage_path() . "/app/" . $document->title;
 
         return response()->download($pathToDocument);
+    }
+
+    public function removeDocument(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $id = $request->id;
+        $document = DB::table('documents')->where('id', $id)->first();
+        $pathToDocument = storage_path() . "/app/" . $document->title;
+
+        if (is_file($pathToDocument)) {
+            unlink($pathToDocument);
+            DB::table('documents')->where('id', $id)->delete();
+        }
+
+        return response()->json($id, 200);
     }
 }

@@ -34,4 +34,5 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('documents', [DocumentsController::class, 'upload']);
     Route::get('documents', [DocumentsController::class, 'getDocuments']);
     Route::get('documents/{id}', [DocumentsController::class, 'downloadDocument']);
+    Route::delete('documents/{id}', [DocumentsController::class, 'removeDocument']);
 });
