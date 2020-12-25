@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Documents;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class DocumentsController extends Controller
 {
-    public function upload(Request $request): \Illuminate\Http\JsonResponse
+    public function upload(Request $request): JsonResponse
     {
         $request->validate([
             'user_id' => 'required',
-            'file' => 'required|mimes:pdf',
+            'file' => 'required',
         ]);
 
         if ($files = $request->file('file')) {
@@ -36,7 +38,7 @@ class DocumentsController extends Controller
         return response()->json();
     }
 
-    public function getDocuments(Request $request): \Illuminate\Http\JsonResponse
+    public function getDocuments(Request $request): JsonResponse
     {
         $user_id = $request->header('user_id');
         $documents = DB::table('documents')->where('user_id', $user_id)->get();
@@ -44,7 +46,7 @@ class DocumentsController extends Controller
         return response()->json($documents, 200);
     }
 
-    public function downloadDocument(Request $request): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    public function downloadDocument(Request $request): BinaryFileResponse
     {
         $id = $request->id;
         $document = DB::table('documents')->where('id', $id)->first();
@@ -53,7 +55,7 @@ class DocumentsController extends Controller
         return response()->download($pathToDocument);
     }
 
-    public function removeDocument(Request $request): \Illuminate\Http\JsonResponse
+    public function removeDocument(Request $request): JsonResponse
     {
         $id = $request->id;
         $document = DB::table('documents')->where('id', $id)->first();
