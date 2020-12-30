@@ -35,7 +35,7 @@ class DocumentsController extends Controller
             ], 201);
         }
 
-        return response()->json();
+        return response()->json([], 400);
     }
 
     public function getDocuments(Request $request): JsonResponse
