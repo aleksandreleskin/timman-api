@@ -17,10 +17,10 @@ class DocumentsController extends Controller
             'file' => 'required',
         ]);
 
-        if (!file_exists(storage_path() . "/app/public/documents/" . $request->file_name)) {
+        if (!file_exists(storage_path() . '/app/public/documents/' . $request->file_name)) {
             if ($file = $request->file->storeAs('public/documents', $request->file_name)) {
                 $document = new Documents();
-                $document->title = $file;
+                $document->title = $request->file_name;
                 $document->user_id = $request->user_id;
                 $document->save();
 
@@ -30,23 +30,24 @@ class DocumentsController extends Controller
                     ->first();
 
                 return response()->json([
-                    "document" => $document
+                    'document' => $document
                 ], 201);
             }
             return response()->json([], 400);
         }
 
 
-        function setNewName($request, $counter = 1) {
+        function setNewName($request, $counter = 1)
+        {
             $explodeFileName = explode('.', $request->file_name);
             $explodeFileName[count($explodeFileName) - 2] =
                 $explodeFileName[count($explodeFileName) - 2] . '(' . $counter . ')';
 
             $newFileName = implode('.', $explodeFileName);
-            if (!file_exists(storage_path() . "/app/public/documents/" . $newFileName)) {
+            if (!file_exists(storage_path() . '/app/public/documents/' . $newFileName)) {
                 if ($file = $request->file->storeAs('public/documents', $newFileName)) {
                     $document = new Documents();
-                    $document->title = 'public/documents/' . $newFileName;
+                    $document->title = $newFileName;
                     $document->user_id = $request->user_id;
                     $document->save();
 
@@ -81,7 +82,7 @@ class DocumentsController extends Controller
     {
         $id = $request->id;
         $document = DB::table('documents')->where('id', $id)->first();
-        $pathToDocument = storage_path() . "/app/" . $document->title;
+        $pathToDocument = storage_path() . '/app/public/documents/' . $document->title;
 
         return response()->download($pathToDocument);
     }
@@ -90,7 +91,7 @@ class DocumentsController extends Controller
     {
         $id = $request->id;
         $document = DB::table('documents')->where('id', $id)->first();
-        $pathToDocument = storage_path() . "/app/" . $document->title;
+        $pathToDocument = storage_path() . '/app/public/documents/' . $document->title;
 
         if (is_file($pathToDocument)) {
             unlink($pathToDocument);
