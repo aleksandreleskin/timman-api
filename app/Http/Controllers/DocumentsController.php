@@ -17,25 +17,56 @@ class DocumentsController extends Controller
             'file' => 'required',
         ]);
 
-        if ($files = $request->file('file')) {
-            $file = $request->file->store('public/documents');
+        if (!file_exists(storage_path() . "/app/public/documents/" . $request->file_name)) {
+            if ($file = $request->file->storeAs('public/documents', $request->file_name)) {
+                $document = new Documents();
+                $document->title = $file;
+                $document->user_id = $request->user_id;
+                $document->save();
 
-            $document = new Documents();
-            $document->title = $file;
-            $document->user_id = $request->user_id;
-            $document->save();
+                $document = DB::table('documents')
+                    ->orderBy('id', 'desc')
+                    ->where('user_id', $document->user_id)
+                    ->first();
 
-            $document = DB::table('documents')
-                ->orderBy('id', 'desc')
-                ->where('user_id', $document->user_id)
-                ->first();
-
-            return response()->json([
-                "document" => $document
-            ], 201);
+                return response()->json([
+                    "document" => $document
+                ], 201);
+            }
+            return response()->json([], 400);
         }
 
-        return response()->json([], 400);
+
+        function setNewName($request, $counter = 1) {
+            $explodeFileName = explode('.', $request->file_name);
+            $explodeFileName[count($explodeFileName) - 2] =
+                $explodeFileName[count($explodeFileName) - 2] . '(' . $counter . ')';
+
+            $newFileName = implode('.', $explodeFileName);
+            if (!file_exists(storage_path() . "/app/public/documents/" . $newFileName)) {
+                if ($file = $request->file->storeAs('public/documents', $newFileName)) {
+                    $document = new Documents();
+                    $document->title = 'public/documents/' . $newFileName;
+                    $document->user_id = $request->user_id;
+                    $document->save();
+
+                    $document = DB::table('documents')
+                        ->orderBy('id', 'desc')
+                        ->where('user_id', $document->user_id)
+                        ->first();
+
+                    return $document;
+                }
+
+            } else {
+                return setNewName($request, ++$counter);
+            }
+            return response()->json([], 400);
+        }
+
+        return response()->json([
+            "document" => setNewName($request)
+        ], 201);
     }
 
     public function getDocuments(Request $request): JsonResponse
