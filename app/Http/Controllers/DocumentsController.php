@@ -17,8 +17,8 @@ class DocumentsController extends Controller
             'file' => 'required',
         ]);
 
-        if (!file_exists(storage_path() . '/app/public/documents/' . $request->file_name)) {
-            if ($file = $request->file->storeAs('public/documents', $request->file_name)) {
+        if (!file_exists(storage_path() . '/app/public/documents/' . $request->user_id . $request->file_name)) {
+            if ($file = $request->file->storeAs('public/documents/' . $request->user_id, $request->file_name)) {
                 $document = new Documents();
                 $document->title = $request->file_name;
                 $document->user_id = $request->user_id;
@@ -44,8 +44,8 @@ class DocumentsController extends Controller
                 $explodeFileName[count($explodeFileName) - 2] . '(' . $counter . ')';
 
             $newFileName = implode('.', $explodeFileName);
-            if (!file_exists(storage_path() . '/app/public/documents/' . $newFileName)) {
-                if ($file = $request->file->storeAs('public/documents', $newFileName)) {
+            if (!file_exists(storage_path() . '/app/public/documents/' . $request->user_id . '/' . $newFileName)) {
+                if ($file = $request->file->storeAs('public/documents/' . $request->user_id, $newFileName)) {
                     $document = new Documents();
                     $document->title = $newFileName;
                     $document->user_id = $request->user_id;
@@ -82,7 +82,7 @@ class DocumentsController extends Controller
     {
         $id = $request->id;
         $document = DB::table('documents')->where('id', $id)->first();
-        $pathToDocument = storage_path() . '/app/public/documents/' . $document->title;
+        $pathToDocument = storage_path() . '/app/public/documents/' . $document->user_id . '/' . $document->title;
 
         return response()->download($pathToDocument);
     }
@@ -91,7 +91,7 @@ class DocumentsController extends Controller
     {
         $id = $request->id;
         $document = DB::table('documents')->where('id', $id)->first();
-        $pathToDocument = storage_path() . '/app/public/documents/' . $document->title;
+        $pathToDocument = storage_path() . '/app/public/documents/' . $id . '/' . $document->title;
 
         if (is_file($pathToDocument)) {
             unlink($pathToDocument);

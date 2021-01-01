@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DocumentsController;
+use App\Http\Controllers\NotesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('documents', [DocumentsController::class, 'getDocuments']);
     Route::get('documents/{id}', [DocumentsController::class, 'downloadDocument']);
     Route::delete('documents/{id}', [DocumentsController::class, 'removeDocument']);
+});
+
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::post('notes', [NotesController::class, 'create']);
+//    Route::get('documents', [DocumentsController::class, 'getDocuments']);
+//    Route::get('documents/{id}', [DocumentsController::class, 'downloadDocument']);
+//    Route::delete('documents/{id}', [DocumentsController::class, 'removeDocument']);
 });
