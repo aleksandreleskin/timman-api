@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('notes', [NotesController::class, 'create']);
     Route::get('notes', [NotesController::class, 'getNotes']);
+    Route::get('notes/{id}', [NotesController::class, 'getNoteValue']);
 //    Route::get('documents', [DocumentsController::class, 'getDocuments']);
 //    Route::get('documents/{id}', [DocumentsController::class, 'downloadDocument']);
 //    Route::delete('documents/{id}', [DocumentsController::class, 'removeDocument']);

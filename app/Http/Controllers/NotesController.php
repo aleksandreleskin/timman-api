@@ -38,4 +38,14 @@ class NotesController extends Controller
 
         return response()->json($notes, 200);
     }
+
+    public function getNoteValue(Request $request) {
+        $id = $request->id;
+        $note_value = DB::table('notes')
+            ->orderBy('id', 'desc')
+            ->where('id', $id)
+            ->value('value');
+
+        return response()->json($note_value, 200);
+    }
 }
