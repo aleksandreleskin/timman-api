@@ -39,7 +39,8 @@ class NotesController extends Controller
         return response()->json($notes, 200);
     }
 
-    public function getNoteValue(Request $request) {
+    public function getNoteValue(Request $request): JsonResponse
+    {
         $id = $request->id;
         $note_value = DB::table('notes')
             ->orderBy('id', 'desc')
@@ -47,5 +48,21 @@ class NotesController extends Controller
             ->value('value');
 
         return response()->json($note_value, 200);
+    }
+
+    public function save(Request $request): JsonResponse
+    {
+        $request->validate([
+            'id' => 'required'
+        ]);
+
+        $id = $request->id;
+        $value = $request->value;
+
+        $note_value = DB::table('notes')
+            ->where('id', $id)
+            ->update(['value' => $value]);
+
+        return response()->json($note_value, 201);
     }
 }
