@@ -45,7 +45,7 @@ class NotesController extends Controller
         $note_value = DB::table('notes')
             ->orderBy('id', 'desc')
             ->where('id', $id)
-            ->value('value');
+            ->first();
 
         return response()->json($note_value, 200);
     }
@@ -57,11 +57,16 @@ class NotesController extends Controller
         ]);
 
         $id = $request->id;
+        $title = $request->title;
         $value = $request->value;
+
+        DB::table('notes')
+            ->where('id', $id)
+            ->update(['value' => $value, 'title' => $title]);
 
         $note_value = DB::table('notes')
             ->where('id', $id)
-            ->update(['value' => $value]);
+            ->first();
 
         return response()->json($note_value, 201);
     }
