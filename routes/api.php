@@ -39,10 +39,11 @@ Route::group(['middleware' => 'auth:api'], function () {
 });
 
 Route::group(['middleware' => 'auth:api'], function () {
-    Route::post('notes', [NotesController::class, 'create']);
+    Route::post('notes', [NotesController::class, 'createNote']);
     Route::get('notes', [NotesController::class, 'getNotes']);
     Route::get('notes/{id}', [NotesController::class, 'getNoteValue']);
-    Route::put('notes', [NotesController::class, 'save']);
+    Route::put('notes', [NotesController::class, 'saveNote']);
+    Route::delete('notes/{id}', [NotesController::class, 'removeNote']);
 //    Route::get('documents', [DocumentsController::class, 'getDocuments']);
 //    Route::get('documents/{id}', [DocumentsController::class, 'downloadDocument']);
 //    Route::delete('documents/{id}', [DocumentsController::class, 'removeDocument']);

@@ -98,6 +98,6 @@ class DocumentsController extends Controller
             DB::table('documents')->where('id', $id)->delete();
         }
 
-        return response()->json($id, 200);
+        return response()->json([], 200);
     }
 }

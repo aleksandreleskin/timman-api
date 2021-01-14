@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class NotesController extends Controller
 {
-    public function create(Request $request): JsonResponse
+    public function createNote(Request $request): JsonResponse
     {
         $request->validate([
             'user_id' => 'required'
@@ -50,7 +50,7 @@ class NotesController extends Controller
         return response()->json($note_value, 200);
     }
 
-    public function save(Request $request): JsonResponse
+    public function saveNote(Request $request): JsonResponse
     {
         $request->validate([
             'id' => 'required'
@@ -69,5 +69,14 @@ class NotesController extends Controller
             ->first();
 
         return response()->json($note_value, 201);
+    }
+
+    public function removeNote(Request $request): JsonResponse
+    {
+        $id = $request->id;
+
+        DB::table('notes')->where('id', $id)->delete();
+
+        return response()->json([], 200);
     }
 }
