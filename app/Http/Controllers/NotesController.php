@@ -77,6 +77,6 @@ class NotesController extends Controller
 
         DB::table('notes')->where('id', $id)->delete();
 
-        return response()->json([], 200);
+        return response()->json(["id" => $id], 200);
     }
 }
