@@ -95,9 +95,9 @@ class DocumentsController extends Controller
 
         if (is_file($pathToDocument)) {
             unlink($pathToDocument);
-            DB::table('documents')->where('id', $id)->delete();
         }
+        DB::table('documents')->where('id', $id)->delete();
 
-        return response()->json([], 200);
+        return response()->json([$id], 200);
     }
 }
