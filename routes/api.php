@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\NotesController;
+use App\Http\Controllers\TodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +45,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('notes/{id}', [NotesController::class, 'getNoteValue']);
     Route::put('notes', [NotesController::class, 'saveNote']);
     Route::delete('notes/{id}', [NotesController::class, 'removeNote']);
-//    Route::get('documents', [DocumentsController::class, 'getDocuments']);
-//    Route::get('documents/{id}', [DocumentsController::class, 'downloadDocument']);
-//    Route::delete('documents/{id}', [DocumentsController::class, 'removeDocument']);
+});
+
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::post('todo', [TodoController::class, 'createTask']);
 });
