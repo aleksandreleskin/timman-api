@@ -50,4 +50,5 @@ Route::group(['middleware' => 'auth:api'], function () {
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('todo', [TodoController::class, 'createTask']);
     Route::get('todo', [TodoController::class, 'getTasks']);
+    Route::put('todo/{id}', [TodoController::class, 'setSuccess']);
 });
