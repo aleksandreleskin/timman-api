@@ -50,4 +50,13 @@ class TodoController extends Controller
 
         return response()->json($task, 200);
     }
+
+    public function removeTask(Request $request): JsonResponse
+    {
+        $id = $request->id;
+
+        DB::table('todos')->where('id', $id)->delete();
+
+        return response()->json($id, 200);
+    }
 }
