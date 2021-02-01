@@ -33,7 +33,7 @@ class NotesController extends Controller
 
     public function getNotes(Request $request): JsonResponse
     {
-        $user_id = $request->header('user_id');
+        $user_id = $request->header('user-id');
         $notes = DB::table('notes')->where('user_id', $user_id)->get();
 
         return response()->json($notes, 200);

@@ -72,7 +72,7 @@ class DocumentsController extends Controller
 
     public function getDocuments(Request $request): JsonResponse
     {
-        $user_id = $request->header('user_id');
+        $user_id = $request->header('user-id');
         $documents = DB::table('documents')->where('user_id', $user_id)->get();
 
         return response()->json($documents, 200);

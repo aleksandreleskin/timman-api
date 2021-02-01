@@ -29,7 +29,7 @@ class TodoController extends Controller
 
     public function getTasks(Request $request): JsonResponse
     {
-        $user_id = $request->header('user_id');
+        $user_id = $request->header('user-id');
         $tasks = DB::table('todos')->orderBy('created_at', 'desc')->where('user_id', $user_id)->get();
 
         return response()->json($tasks, 200);
