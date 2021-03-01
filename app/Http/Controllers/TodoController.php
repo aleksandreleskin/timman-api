@@ -60,4 +60,9 @@ class TodoController extends Controller
 
         return response()->json($id, 200);
     }
+
+    public function changeOrder(Request $request): JsonResponse
+    {
+        return response()->json($request, 200);
+    }
 }
