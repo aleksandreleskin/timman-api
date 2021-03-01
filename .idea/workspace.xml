@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b357d85a-fa23-4159-998e-2c6c719d89b0" name="Default Changelist" comment="commit" />
+    <list default="true" id="b357d85a-fa23-4159-998e-2c6c719d89b0" name="Default Changelist" comment="commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TodoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TodoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_29_145517_create_todos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_29_145517_create_todos_table.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -159,7 +163,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -227,7 +231,17 @@
       <workItem from="1612083073637" duration="2557000" />
       <workItem from="1612188198684" duration="720000" />
       <workItem from="1612452269522" duration="860000" />
-      <workItem from="1612453238558" duration="4813000" />
+      <workItem from="1612453238558" duration="4981000" />
+      <workItem from="1612535935072" duration="1384000" />
+      <workItem from="1612628166468" duration="1213000" />
+      <workItem from="1612637385904" duration="1129000" />
+      <workItem from="1612986883713" duration="607000" />
+      <workItem from="1613071039692" duration="15000" />
+      <workItem from="1613498614518" duration="79000" />
+      <workItem from="1613499152049" duration="18000" />
+      <workItem from="1613554230354" duration="46000" />
+      <workItem from="1614531461211" duration="1341000" />
+      <workItem from="1614591390008" duration="769000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1608393126798</created>
@@ -383,7 +397,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612457844905</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="commit">
+      <created>1612458231065</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1612458231065</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

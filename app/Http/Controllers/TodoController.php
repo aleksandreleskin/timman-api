@@ -19,6 +19,7 @@ class TodoController extends Controller
         $task = new Todo();
         $task->value = $request->value;
         $task->user_id = $request->user_id;
+        $task->order = $request->order;
         $task->success = false;
         $task->save();
 

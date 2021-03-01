@@ -18,6 +18,7 @@ class CreateTodosTable extends Migration
             $table->string('value');
             $table->boolean('success');
             $table->integer('user_id');
+            $table->integer('order');
             $table->timestamps();
         });
     }
