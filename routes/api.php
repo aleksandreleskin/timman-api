@@ -37,7 +37,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('documents', [DocumentsController::class, 'getDocuments']);
     Route::get('documents/{id}', [DocumentsController::class, 'downloadDocument']);
     Route::delete('documents/{id}', [DocumentsController::class, 'removeDocument']);
+    Route::post('documents/share', [DocumentsController::class, 'shareDocument']);
 });
+Route::get('documents/share/{id}', [DocumentsController::class, 'getShareDocument']);
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('notes', [NotesController::class, 'createNote']);

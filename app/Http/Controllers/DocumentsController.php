@@ -124,4 +124,22 @@ class DocumentsController extends Controller
 
         return response()->json(['id' => $id, 'size' => $this->getFilesSize($user_id)], 200);
     }
+
+    public function shareDocument(Request $request): JsonResponse
+    {
+        $user_id = $request->user_id;
+        $id = $request->id;
+
+        $document = DB::table('documents')->where('id', $id)->first();
+        $pathToDocument = storage_path() . '/app/public/documents/' . $user_id . '/' . $document->title;
+
+        return response()->json(base64_encode($pathToDocument), 200);
+    }
+
+    public function getShareDocument(Request $request): JsonResponse
+    {
+        $id = $request->id;
+
+        return response()->json(base64_decode($id), 200);
+    }
 }
