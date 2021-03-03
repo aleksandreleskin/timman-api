@@ -63,6 +63,22 @@ class TodoController extends Controller
 
     public function changeOrder(Request $request): JsonResponse
     {
-        return response()->json($request, 200);
+        $idA = $request->taskA['id'];
+        $idB = $request->taskB['id'];
+
+        $orderA = $request->taskA['order'];
+        $orderB = $request->taskB['order'];
+
+        DB::table('todos')
+            ->where('id', $idA)
+            ->update(['order' => $orderB]);
+
+        DB::table('todos')
+            ->where('id', $idB)
+            ->update(['order' => $orderA]);
+
+        $tasks = DB::table('todos')->where('user_id', $request->header('user-id'))->get();
+
+        return response()->json($tasks, 200);
     }
 }
