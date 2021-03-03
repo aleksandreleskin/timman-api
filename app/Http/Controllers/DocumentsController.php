@@ -34,7 +34,7 @@ class DocumentsController extends Controller
         ]);
 
         if ($this->getFilesSize($request->user_id) + (filesize($request->file) / 1024 / 1024) < 10) {
-            if (file_exists(storage_path() . '/app/public/documents/' . $request->user_id . '/' . $request->file_name)) {
+            if (!file_exists(storage_path() . '/app/public/documents/' . $request->user_id . '/' . $request->file_name)) {
                 if ($file = $request->file->storeAs('public/documents/' . $request->user_id, $request->file_name)) {
 
                     $document = new Documents();
