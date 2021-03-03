@@ -36,14 +36,15 @@ class TodoController extends Controller
         return response()->json($tasks, 200);
     }
 
-    public function setSuccess(Request $request): JsonResponse
+    public function update(Request $request): JsonResponse
     {
         $id = $request->id;
-        $success = $request->value;
+        $success = $request->valueSuccess;
+        $value = $request->value;
 
         DB::table('todos')
             ->where('id', $id)
-            ->update(['success' => $success]);
+            ->update(['success' => $success, 'value' => $value]);
 
         $task = DB::table('todos')
             ->where('id', $id)

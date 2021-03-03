@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('todo', [TodoController::class, 'createTask']);
     Route::get('todo', [TodoController::class, 'getTasks']);
-    Route::patch('todo/{id}', [TodoController::class, 'setSuccess']);
+    Route::patch('todo/{id}', [TodoController::class, 'update']);
     Route::put('todo', [TodoController::class, 'changeOrder']);
     Route::delete('todo/{id}', [TodoController::class, 'removeTask']);
 });
