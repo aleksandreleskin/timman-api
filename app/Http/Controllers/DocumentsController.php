@@ -140,6 +140,12 @@ class DocumentsController extends Controller
     {
         $id = $request->id;
 
-        return response()->json(base64_decode($id), 200);
+        if (is_file(base64_decode($id))) {
+            $exploded = explode('/', base64_decode($id));
+
+            return response()->json($exploded[count($exploded) - 1], 200);
+        }
+
+        return response()->json([], 404);
     }
 }
