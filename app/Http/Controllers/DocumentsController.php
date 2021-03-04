@@ -148,4 +148,11 @@ class DocumentsController extends Controller
 
         return response()->json([], 404);
     }
+
+    public function downloadShareDocument(Request $request): BinaryFileResponse
+    {
+        $id = $request->id;
+
+        return response()->download(base64_decode($id));
+    }
 }
