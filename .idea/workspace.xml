@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b357d85a-fa23-4159-998e-2c6c719d89b0" name="Default Changelist" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DocumentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DocumentsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NotesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NotesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_01_191253_create_notes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_01_191253_create_notes_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +28,10 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/routes/api.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Http/Controllers/DocumentsController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -161,7 +165,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../project" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -246,7 +250,15 @@
       <workItem from="1614711522520" duration="46000" />
       <workItem from="1614770889488" duration="4860000" />
       <workItem from="1614799233862" duration="3075000" />
-      <workItem from="1614860870794" duration="3431000" />
+      <workItem from="1614860870794" duration="3451000" />
+      <workItem from="1614939775855" duration="618000" />
+      <workItem from="1615033702503" duration="407000" />
+      <workItem from="1615042869141" duration="8000" />
+      <workItem from="1615202262537" duration="66000" />
+      <workItem from="1621978948900" duration="609000" />
+      <workItem from="1622018280246" duration="616000" />
+      <workItem from="1622211525249" duration="9000" />
+      <workItem from="1622652359186" duration="663000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1608393126798</created>
@@ -458,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614863209505</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="commit">
+      <created>1614866746310</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1614866746310</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

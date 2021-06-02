@@ -57,12 +57,11 @@ class NotesController extends Controller
         ]);
 
         $id = $request->id;
-        $title = $request->title;
         $value = $request->value;
 
         DB::table('notes')
             ->where('id', $id)
-            ->update(['value' => $value, 'title' => $title]);
+            ->update(['value' => $value]);
 
         $note_value = DB::table('notes')
             ->where('id', $id)
